@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul> Ingredients
+        <li>Sugar</li>
+        <li>Milk</li>
+        <li>Eggs</li>
+        <li>Flour</li>
+        <li>Baking Soda</li>
+    </ul>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <script>
+        $(function() {
+            /*
+            Event delegation refers to the process of using event propagation (bubbling) to handle events at a higher level in the DOM than the element on which the event originated. 
+            It allows us to attach a single event listener for elements that exist now or in the future.
+            */
+            // second arg is used for event delegation
+            // the CSS selector acts as a filter: the callback only executes if the event target matches what was passed in
+            $("ul").on("click","li", function(e) {
+                console.log("You just clicked on ", $(e.target).text());
+            })
+        });
+    </script>
+</body>
+</html>

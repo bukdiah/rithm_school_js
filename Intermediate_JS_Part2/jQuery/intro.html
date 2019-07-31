@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery</title>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="container">
+            <h1 id="welcome"></h1>
+            <div class="list-container">
+                <ul class="nav">
+                    <li class="nav-item">Home</li>
+                    <li class="nav-item">About Us</li>
+                    <li class="nav-item">Contact</li>
+                    <li class="nav-item">Careers</li>
+                    <li class="nav-item">Apply</li>
+                </ul>
+            </div>
+        </div>
+        <footer>
+            <div class="footer-container">
+                <ul class="footer-nav">
+                    <li class="footer-nav-item">Learn More</li>
+                    <li class="footer-nav-item">Blog</li>
+                    <li class="footer-nav-item">Email Us</li>
+                </ul>
+            </div>
+        </footer>
+        <script>
+        $(document).ready(function(){
+        // the DOM has now loaded
+
+        // Select the footer element
+        var $footerElement = $("footer");
+
+        // div with id of container
+        var $div = $("div #container");
+        console.log($div)
+
+        // li's inside the ul with class nav
+        var $lis = $("ul.nav").children();
+
+        console.log($lis)
+
+        // 5. Select the third li inside of the div with a class of list-container.
+        $(".list-container li:nth-child(3)");
+        
+        // 6. Select only the last li in each of the uls.
+        $("ul li:last-child");
+
+        });
+
+
+        /*
+        $(function() {
+            // a shorter way to wait for the DOM to load
+        });*/
+        /*
+        document.addEventListener("DOMContentLoaded", function() {
+            // a longer way to wait for the DOM to load, without jQuery.
+            // jQuery's syntax is much shorter!
+        });*/
+        </script>
+</body>
+</html>
