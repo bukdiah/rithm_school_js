@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">
+    </div>
+    <section id="container">
+        <ul>
+            <li class="first">one</li>
+            <li class="second">two</li>
+            <li class="third">three</li>
+        </ul>
+        <ol>
+            <li class="first">one</li>
+            <li class="second">two</li>
+            <li class="third">three</li>
+        </ol>
+    </section>
+    <div class="footer">
+    </div>
+
+    <script>
+        // 1
+        var section = document.getElementById("container");
+        //2
+        var section = document.querySelector("#container");
+        //3
+        var seconds = document.querySelectorAll(".second");
+        console.log(seconds.length)
+        //4
+        var listItemThird = document.querySelector("ol li.third");
+        
+        // 5
+        var section = document.querySelector("#container");
+        //section.innerHTML = "Hello!"
+
+        //6
+        var footer = document.querySelector(".footer");
+        footer.classList.add("main");
+
+        //7
+        footer.classList.remove("main");
+
+        //8
+        var li = document.createElement("li");
+
+        //9
+        li.innerHTML = "four";
+
+        //10
+        var ul = document.querySelector("ul");
+        ul.appendChild(li);
+
+        //11
+        var section = document.querySelector("#container");
+        var section_children = section.children;
+        //console.log(section_children);
+        var ol = section_children[1];
+        var ol_children = ol.children;
+
+        for(let i=0; i<ol_children.length; i++) {
+            ol_children[i].style.backgroundColor = "green";
+        }
+
+        // 12
+        var body = document.body;
+        body.removeChild(footer);
+        
+
+    </script>
+</body>
+</html>

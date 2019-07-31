@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button class="first_button">Click me first!</button>
+    <button class="second_button" >Click me second!</button>
+    <button class="third_button">Click me third!</button>
+</body>
+<script>
+    var buttons = document.getElementsByTagName("button");
+
+    // we have to add the event listener to each button
+    /*
+    for(var i=0; i<buttons.length; i++){
+        buttons[i].addEventListener("click", function(){
+            alert('You just clicked on a button!');
+        });
+    }*/
+
+    // In order to remove an event listener, the callback that we pass
+    //in can't be an anonymous function
+
+    // In order to remove, we have to name our function before adding it instead of adding an anonymous function
+    function alertData(){
+        alert("You just clicked a button");
+    }
+
+    for(var i=0; i<buttons.length; i++){
+        buttons[i].addEventListener("click", alertData);
+    }
+
+    // since we have named our function, we know which one to remove
+    for(var i=0; i<buttons.length; i++){
+        buttons[i].removeEventListener("click", alertData);
+    }
+
+</script>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Todo App</title>
+
+    <style>
+        .container {
+            display: block;
+
+        }
+        .todo {
+            display: block;
+            width: 250px;
+        }
+
+        .todo li, button {
+            float: left;
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Todo List!</h1>
+
+        <!--Programmatically create an unordered list
+            [TODO] [Complete][Remove]
+        -->
+        <div>
+            <ul id="todo_list">
+
+            </ul>
+        </div>
+
+        <div>
+            <form action="#" onsubmit="addToDo(); return false">
+                <label>Todo: <input id="todo_event" type="text"/></label>
+                <br />
+                <input type="submit" value="Add"/>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        // Load existing todos from Local Storage
+        var todos = JSON.parse(localStorage.getItem("todos"));
+
+        if(todos) {
+            for(let i=0; i<todos.length; i++) {
+                if(todos[i].marked || todos[i].status === 'added')
+                    addToDoFromList(todos[i]);
+            }
+        }
+    });
+
+    var todo_count = localStorage.getItem("count")|| 0;
+    var todo_array = JSON.parse(localStorage.getItem("todos"))|| [];
+
+    function addToDoFromList(elem) {
+        console.log(elem);
+        var ul = document.querySelector("#todo_list");
+        var todo = elem.event;
+
+        var div = document.createElement("div");
+        div.classList.add("todo");
+        div.setAttribute("id", elem.id)
+
+        var li = document.createElement("li");
+        li.innerText = todo;
+        li.setAttribute("id", elem.li);
+
+        if(elem.marked) {
+            li.style.setProperty("text-decoration", "line-through");
+        }
+
+        var completeButton = document.createElement("button");
+        var removeButton = document.createElement("button");
+        completeButton.innerText = "Done";
+        completeButton.setAttribute("id", elem.completeButton);
+        completeButton.setAttribute("onClick", "markComplete()")
+        removeButton.innerText = "Remove";
+        removeButton.setAttribute("id", elem.removeButton);
+        removeButton.setAttribute("onClick", "remove()")
+
+
+        div.appendChild(li);
+        div.appendChild(completeButton);
+        div.appendChild(removeButton);
+
+        ul.appendChild(div);
+    }
+
+    function addToDo() {
+        var ul = document.querySelector("#todo_list");
+        var todo = document.querySelector("#todo_event").value;
+        
+        todo_count++;
+
+        var div = document.createElement("div");
+        div.classList.add("todo");
+        div.setAttribute("id", `todo_container_${todo_count}`)
+
+        var li = document.createElement("li");
+        li.innerText = todo;
+        li.setAttribute("id", `todo_${todo_count}`);
+
+        var completeButton = document.createElement("button");
+        var removeButton = document.createElement("button");
+        completeButton.innerText = "Done";
+        completeButton.setAttribute("id", `complete_${todo_count}`);
+        completeButton.setAttribute("onClick", "markComplete()")
+        removeButton.innerText = "Remove";
+        removeButton.setAttribute("id", `remove_${todo_count}`);
+        removeButton.setAttribute("onClick", "remove()")
+
+
+        div.appendChild(li);
+        div.appendChild(completeButton);
+        div.appendChild(removeButton);
+
+        ul.appendChild(div);
+
+        // create a todo object and add to the todo_array
+        var obj = {
+            id: `todo_container_${todo_count}`,
+            event: li.innerText,
+            marked: false,
+            status: "added",
+            completeButton: completeButton.getAttribute("id"),
+            removeButton: removeButton.getAttribute("id"),
+            li: li.getAttribute('id')
+        };
+
+        todo_array.push(obj);
+
+        localStorage.setItem("todos", JSON.stringify(todo_array));
+        localStorage.setItem("count", todo_count);
+
+        console.log("addToDo ===> ", todo_array);
+    }
+
+    function remove(e) {
+        e = e || window.event;
+        e = e.target || e.srcElement;
+        var id;
+        if(e.nodeName === 'BUTTON') {
+            id = e.id;
+        }
+
+        var delimiter = id.indexOf("_");
+        var todo_number = id.slice(delimiter);
+
+        var ul_parent = document.querySelector("#todo_list");
+        var removed = document.querySelector(`#todo_container${todo_number}`);
+
+        ul_parent.removeChild(removed);
+
+        var index = todo_array.findIndex(function(elem) {
+            return elem.id === `todo_container${todo_number}`;
+
+        });
+
+        todo_array.splice(index, 1);
+        localStorage.setItem("todos", JSON.stringify(todo_array));
+        todo_count--;
+        localStorage.setItem("count", todo_count);
+        console.log("remove ===> ", todo_array);
+
+    }
+
+    function markComplete(e) {
+        e = e || window.event;
+        e = e.target || e.srcElement;
+        var id;
+        if(e.nodeName === 'BUTTON') {
+            id = e.id;
+        }
+        console.log(id);
+        var delimiter = id.indexOf("_");
+        var todo_number = id.slice(delimiter);
+
+        var target_todo = document.querySelector(`#todo${todo_number}`);
+        target_todo.style.setProperty("text-decoration", "line-through");
+
+        var index = todo_array.findIndex(function(elem) {
+            return elem.id === `todo_container${todo_number}`;
+        });
+
+        todo_array[index].marked = true;
+
+        localStorage.setItem("todos", JSON.stringify(todo_array));
+
+        console.log("markComplete ===> ", todo_array);
+    }
+</script>
+</html>

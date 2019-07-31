@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- make sure for now that your script tag is in the head -->
+    <title>Document</title>
+</head>
+<body id= "container">
+    <div class="hello">
+        Hello World
+    </div>
+    <div class="hello">
+        Hello Everyone!
+    </div>
+    <a href="#">This link goes nowhere!</a>
+    <button>Click me!</button>
+    <script>
+        // you can put your JavaScript in here, or include an external file.
+        /*
+        var container = document.getElementById("container");
+
+        var container = document.querySelector("#container"); // expects CSS selector
+
+        var divs = document.getElementsByTagName("div"); // get all dives
+        var divs = document.querySelectorAll("div"); // css selector
+
+        var divsWithClassOfHello = document.getElementsByClassName("hello");
+        var divsWithClassOfHello = document.querySelectorAll(".hello"); // using css selector*/
+
+        // Modify props and attributes on elems in the DOM
+        var firstDiv = document.querySelectorAll('div')[0];
+        firstDiv.innerHTML = "Just Changed!";
+
+        var secondDiv = document.querySelectorAll('div')[1];
+        secondDiv.innerText = "Just changed Again!";
+
+        //manipule css props for elems (thru inline styling) with the style prop
+        firstDiv.style.color = "red";
+        firstDiv.style.backgroundColor = "teal";
+
+        // access/modify attributes on elements
+        var body = document.getElementById("container");
+
+        body.getAttribute("id"); // "container"
+        body.setAttribute("id", "new_container");
+        body.getAttribute("id"); // "new_container"
+
+        // add and rmeove classes to elements using classList
+        var secondDiv = document.getElementsByTagName("div")[1];
+
+        secondDiv.classList; // ["hello"]
+        secondDiv.classList.add("another_class");
+        secondDiv.classList; // ["hello", "another_class"]
+        secondDiv.classList.remove("hello");
+        secondDiv.classList; // [another_class"]        
+
+        // NODES vs ELEMENTS
+
+        /*
+            node is generic name for any type of object in DOM hierarchy
+            An element is one specific type of node
+
+            ELEMENT_NODE is an HTML element (div, span...)    
+        */
+
+        var container = document.getElementById("container");
+        container.childNodes; // // this contains all of the nodes (including text nodes) that are children
+        container.childNodes.length; // 11
+        container.children; // this contains all of the elements that are children of the element we have selected
+        container.children.length; // 5
+
+        var link = document.querySelector("a");
+        link.parentElement; // <body id="container">...</body>
+        link.previousElementSibling; // <div class="hello">Hello Everyone!</div>
+        link.previousSibling; // text node
+        link.nextSibling; // text node
+        link.nextElementSibling; // <button>​Click me!​</button>​
+
+        // Create elements
+        var newDiv = document.createElement("div");
+
+        // Appending elements
+        var button = document.createElement("button");
+        button.innerText = "Created via JS";
+
+        var container = document.getElementById("container");
+        container.appendChild(button);
+
+        // removing elements
+        var linkToBeRemoved = document.querySelector("a");
+        var container = document.getElementById("container");
+        container.removeChild(linkToBeRemoved);
+
+        // changing mulitple elems
+
+        // change all div backgrounds to be red
+        var divs = document.querySelectorAll("div");
+        
+        for (var i=0; i<divs.length; i++) {
+            divs[i].style.backgroundColor = "red";
+        }
+
+    </script>
+</body>
+</html>

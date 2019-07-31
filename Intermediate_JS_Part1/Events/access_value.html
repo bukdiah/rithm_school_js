@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul> Ingredients
+        <li>Sugar</li>
+        <li>Milk</li>
+        <li>Eggs</li>
+        <li>Flour</li>
+        <li>Baking Soda</li>
+    </ul>
+</body>
+<script>
+    /*
+    var listItems = document.querySelectorAll('li');
+
+    for(var i=0; i<listItems.length; i++){
+        listItems[i].addEventListener("click", function(event){
+            alert("You just clicked on " + event.target.innerText);
+        });
+    }*/
+
+    // adding event listeners to parent elements
+    // OPTION 1: listening on the parent
+    var ul = document.querySelector("ul");
+
+    // how many event listeners?
+    ul.addEventListener("click", function(event){
+        alert("You just clicked on " + event.target.innerText);
+    });
+
+    // OPTION 2: listening on the children
+    /*
+    var listItems = document.getElementsByTagName("li");
+
+    // how many event listeners?
+    for(var i=0; i<listItems.length; i++){
+        listItems[i].addEventListener("click", function(event){
+            alert("You just clicked on " + event.target.innerText);
+        });
+    }*/
+
+    // Option 1 is most effecient since it uses fewer listeners
+</script>
+</html>

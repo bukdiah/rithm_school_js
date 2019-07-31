@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        /*
+        The DOMContentLoaded event fires when parsing of the current page is complete; 
+        the load event fires when all files have finished loading from all resources, 
+        including ads and images. 
+        DOMContentLoaded is a great event to use to hookup UI functionality to complex web pages.
+
+
+        */
+        document.addEventListener("DOMContentLoaded", function(){
+            var container = document.getElementById("container");
+            container.innerText = "Hello World"; // This works now!
+        });
+    </script>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+</body>
+</html>
