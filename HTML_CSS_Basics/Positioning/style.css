@@ -1,0 +1,89 @@
+/*
+    To use flexbox, your element's display prop must be either flex or inline-flex to mak your elements inline
+    The distinction here is similar to the distinction between block and inline-block
+
+    flex-direction:
+        row: lay out items in a row (default)
+        column: lay out items in a column
+        row-reverse: lay out items in a row with reverse ordering
+        column-reverse: lay out items in a column with reverse ordering
+
+    justify-content: affects the space along the flex-direction. You can think of this as the horizontal alignment:
+        left alignment - flex-start
+        center - center
+        right alignment - flex-end
+        even amount of space BETWEEN elements - space-between
+        even amount of space AROUNd elements - space-around
+
+        When the direction is a column, justify-content refers to the vertical axis
+    
+    align-items: affects the space perpendicular to the flex-direction. You can think of this as vertical alignment:
+        top - flex-start
+        center - center
+        bottom - flex-end
+
+        When the direction is a column, align-itmes refers to the horizontal axis
+    
+    order - allows you to order items based on their position in the DOM. The order will start at 0, so anything lower will go higher and anything higher will go lower in the order. 
+    See the HTML and CSS above for some examples of setting this property, and how it affects the layout of the page.
+
+    align-self - this property allows you to overwrite the value of align-items for particular elements. It accepts the same values as align-items.
+
+    flex-basis - This lets you manually set the size of a flexbox element's content box. At first glance it may seem like it's synonymous with the width property, but this isn't always the case. For more details, read this Stack Overflow question.
+
+    flex-grow - This lets you set proportional sizes of flex items within the same container. For example, an element with a flex-grow value of 2 will take up twice as much space as an element with a flex-grow value of 1.
+
+    flex-shrink - Similar to flex-grow, but for shrinking elements when there's not enough space. A useful demo of this property is available at CSS Tricks.
+
+    flex - This is a shorthand which lets you set flex-grow, flex-shrink, and flex-basis all in one line (similar to the border property, which lets you set border-width, border-style, and border-color).
+
+    flex-wrap - When items in a flex container get too wide, what should happen? This property lets you tell the browser whether it should allow flex elements to wrap onto a new line, or whether they should just shrink in order to fit on the same line. Fore more on this, check out MDN.
+    */
+div {
+    width: 100px;
+    height: 100px;
+    color:white;
+  }
+  
+  .container {
+    display: flex;
+    /*FLEX DIRECTION - can reverse etc*/
+    flex-direction: column;
+    background: #F60009;
+    height: 500px;
+    width: 500px;
+  }
+  
+  .first {
+    display: flex;
+    background: #53007A;
+    /*VERTICAL*/
+    align-items: center;
+    /*HORIZONTAL*/
+    justify-content: space-around;
+    /*ORDER  -1 first, highest last */
+    order: 1;
+  }
+  
+  .second {
+    background: #FC9709;
+  
+  }
+  
+  .third {
+    background: #A800DF;
+    align-self: flex-end;
+  }
+  
+  .fourth {
+    background: #8BE7E6;
+  }
+  
+  .fifth {
+    background: #93B112;
+  }
+  
+  .sixth {
+    background: #E6F0BA;
+    order: -1;
+  }

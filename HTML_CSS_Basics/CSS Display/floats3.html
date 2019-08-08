@@ -1,0 +1,69 @@
+<!--
+Next, let's make a two-column layout by floating the article. The aside is floated to the left, so let's remove the clear property on the article and instead set float: right; on it.
+
+When you do this, you'll see that you've got two columns, but there's a problem: the aside is much shorter than the article, because it has less content! Consequently, the yellow background on the left is much shorter than the green background on the right. How can we fix this? If you know the exact height you need the aside to be you could set the height property, but very often you don't know what the height needs to be, as it may depend on the screen size. In this case, there are a couple of workarounds. Here's the approach we'll use:
+
+Set the padding-bottom to 1000px (or some other large number) on the aside. This makes the aside tall enough: in fact, now it's too tall!
+Set the margin-bottom to -1000px (or some other large number) on the aside.
+Set the overflow property to hidden on the section.
+(These last two steps ensure that the footer is in the right place, and that the extra height from the aside gets hidden.)
+
+HACKY AS HELL
+
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Two Column Layout</title>
+    <style>
+        header {
+            background: red;
+        }
+
+        article {
+            float: right;
+            background: green;
+            width: 65%;
+        }
+
+        aside {
+            float: left;
+            background: yellow;
+            width: 35%;
+            padding-bottom: 1000px;
+            margin-bottom: -1000px;
+        }
+
+        footer {
+            background: brown;
+        }
+
+        section {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        header
+    </header>
+    <section>
+        <aside>
+            Sidebar
+        </aside>
+        <article>
+            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt enim porro praesentium in adipisci iste debitis reiciendis ipsum. Minima harum, quisquam consequuntur nihil, error beatae ea dolorem blanditiis molestias veniam.</div>
+            <div>Quasi fuga provident neque repudiandae quo sed reprehenderit vitae vel voluptatibus laboriosam quae eveniet quibusdam molestiae distinctio quia saepe aspernatur, fugiat ipsum expedita repellendus, molestias harum? Sed ex nostrum id.</div>
+            <div>Fugiat neque, veritatis soluta modi voluptate hic vel inventore, quod quaerat ad itaque enim aut sint quo earum! Magnam possimus, autem dolorum laboriosam culpa quos, amet nostrum? At, maiores repellat.</div>
+            <div>Ipsam, nulla. Laboriosam quam vero quas molestiae maiores. Soluta distinctio officiis placeat necessitatibus fuga porro quis odio, odit earum cupiditate natus iusto, ut alias, voluptatem amet maxime repudiandae architecto deleniti.</div>
+            <div>Dolorum debitis saepe, numquam sunt, et eum atque deleniti dolore, culpa provident dolor nesciunt dignissimos. Corrupti quaerat dicta aliquam voluptatum? Quaerat cumque odio, maiores, nesciunt dolores enim suscipit earum sequi!</div>
+            <div>Quos sit non deleniti fuga expedita quisquam unde asperiores. Accusantium assumenda consequuntur ad dicta odit molestiae praesentium facere impedit illo delectus nisi, quia asperiores dolorum necessitatibus saepe a deserunt vero!</div>
+        </article>
+    </section>
+    <footer>
+        Footer
+    </footer>
+</body>
+</html>

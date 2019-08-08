@@ -1,0 +1,60 @@
+<!--
+    Four of the most commonly used values for display:
+
+    none - an element with this display property won't show up on the page
+
+    block - this element starts on a new line and stretches horizontally as far as it can;
+    that is, by default it takes up all avaialble horizontal space. Common block-level elems:
+    div, p, form, header, footer, section...
+
+    inline - this element can wrap some text inside a paragraph without disrupting the flow of that
+    paragraph. <span> is the standard inline elem but others are storng, b, and em. <a> is the most
+    common.
+
+    inline-block - hybrid of block and inline. Allows you to define a width and height with inline behavior!
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Displays</title>
+
+    <style>
+        /*Let's line up three 200x200 boxes together*/
+
+        /*since divs are block level elements by default, they will stake on top of each other*/
+
+        div {
+            height: 200px;
+            width: 200px;
+            margin: 5px;
+            background: green;
+        }
+        /*Let's change the display property for the last two divs; how do you think this will affect the layout?*/
+        #three, #four {
+            /*
+                inline elements IGNORE width and height properties! They are only as large as the content inside of them requires!
+            
+            */
+            display: inline;
+        }
+        /*inline-block example*/
+        #three, #four {
+            /*
+            inline-block elements behave just like inline elements, except for the fact that you can set their width and height!
+            */
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="one">I AM A BOX</div>
+    <div id="two">I AM A BOX</div>
+    <div id="three">I AM A BOX</div>
+    <div id="four">I AM A BOX</div>
+</body>
+</html>

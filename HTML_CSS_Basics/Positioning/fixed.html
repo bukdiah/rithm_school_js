@@ -1,0 +1,56 @@
+<!--
+    FIXED Positioning:
+        Similar to absoulte but the elements with fixed are ALWAYS positioned relative to the active viewport!
+
+        If you position, for example, a fixed element with a top offset of 50 pixels and a right offset of 100 pixels, 
+        the top right corner of the element will be positioned 50 pixels over to the left and 100 pixels down. 
+        Unlike with absolute positioning, scrolling the page content would not affect this element's position at all. 
+        It will remain in that position, no matter how the screen was resized or scrolled. It truly is fixed.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  body {
+    margin: 0; /*REMOVE BROWSER MARGIN*/
+  }
+  /*
+    the red div is ALWAYS in the bottom-left corner of the screen no matter where you scroll!
+
+    With fixed positioning, thr red div is in front of all the WRAPPER divs EXCEPT for id front div.
+    This is because of the z-index property
+  */
+  .red {
+    background-color: red;
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+  }
+  .wrapper {
+    width: 500px;
+    height: 400px;
+    background: #e3e3e3;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  #front {
+    z-index: 2;
+  }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="red"></div>
+  </div>
+  <div class="wrapper"></div>
+  <div class="wrapper"></div>
+  <div class="wrapper"></div>
+  <div class="wrapper" id="front"></div>
+  <div class="wrapper"></div>
+</body>
+</html>

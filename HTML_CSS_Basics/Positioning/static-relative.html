@@ -1,0 +1,37 @@
+<!--
+    positioning let's us take an element on the page and control where and how it's positioned relative to things
+    such as its original starting position, other elements, or even the window itself. Depending on the type, the element
+    will either remain in the document flow (relative) or be removed from the document flow (absolute, fixed) like with floats
+
+    Once position is defined, we can use offset values for top, right, bottom, left, and z-index
+
+    BY DEFAULT, the POSITION of an element is STATIC.
+
+    STATIC vs RELATIVE: A static element IGNORES all offet properties. Other than that, they are the same.
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Static and Relative Positioning</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            background: orange;
+            position: relative;
+
+            /*move divs 100 pixels from the top, relative to where they'd normally sit*/
+            top: 100px;
+            /*move divs 200 pixels from the left, relative to where they'd normally sit*/
+            left: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div>hello</div>
+</body>
+</html>

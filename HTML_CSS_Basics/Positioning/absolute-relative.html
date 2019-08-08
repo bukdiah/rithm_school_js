@@ -1,0 +1,55 @@
+<!--
+    RELATIVE POSITIONING:
+        elements are not removed from the document flow
+        any offsets you place on the element will be RELATIVE to its default position in the document flow
+    
+    ABSOLUTE POSITIONING:
+        the element is removed from the document flow
+        Any offsets you place on an element will be relative to its parent (if the parent isn't statically positioned)
+            if the parent is static, we keep going up the chain until we find a non static positioned element. If none found,
+            offsets are relative to the BODY
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Relative and Absolute</title>
+</head>
+<style>
+    body {
+        margin: 0; /*Remove browser margin*/
+    }
+
+    .red {
+        background-color: red;
+        position: absolute;
+        width: 200px;
+        height:200px;
+        /*
+            the red div is in the bottom right corner of its parent WRAPPER
+
+            This makes sense: the parent has relative positioning, 
+            and the red div is set to be offset 0 pixels from the bottom and the right.
+        
+        */
+        bottom: 0;
+        right: 0;
+    }
+
+    .wrapper {
+        width: 500px;
+        height: 400px;
+        background: #e3e3e3;
+        position: relative;
+        margin-bottom: 10px;
+    }
+
+</style>
+<body>
+    <div class="wrapper">
+        <div class="red"></div>
+    </div>
+</body>
+</html>
