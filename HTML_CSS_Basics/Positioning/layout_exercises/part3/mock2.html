@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mock 2</title>
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .row1 {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .row2 {
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        #purple {
+            background: purple;
+            height: 250px;
+            width: 100%;
+        }
+
+        .vertical {
+            width: 31%;
+            height: 100%;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+        <div class="row1">
+            <div id="purple"></div>
+        </div>
+        <div class="row2">
+            <div class="vertical"></div>
+            <div class="vertical"></div>
+            <div class="vertical"></div>
+        </div>
+</body>
+</html>
